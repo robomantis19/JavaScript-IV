@@ -22,7 +22,7 @@ class Instructor extends Person{
     demo(subject){
         return `Today we are learning about ${subject}`
     }
-    grade(subject){
+    grade(student, subject){
         return `${student.Name} recieves a perfect score on ${subject}`
     }
 }
@@ -35,7 +35,9 @@ class Student extends Instructor{
         this.thefavSubjects = stuAttr.favSubjects
     }  
     listSubjects(){
-        console.log(`${this.thefavSubjects}`)
+        console.log(`${this.thefavSubjects[0]}`)
+        console.log(`${this.thefavSubjects[1]}`)
+        console.log(`${this.thefavSubjects[2]}`)
         
     }
     PRAssignment(subject){
@@ -55,7 +57,7 @@ class ProjectManagers extends Instructor{
     standUp(channel){
         console.log(`${this.Name} announces to ${channel}, @channel standy`)
     }
-    debugsCode(student){
+    debugsCode(student, subject){
         console.log(`${this.Name} debugs ${student.Name}'s code on ${subject}`)
     }
 }
@@ -86,7 +88,7 @@ const student = new Student({
     location: 'Iowa',
     previousBackground: 'Burger King worker',
     className: "CS243",
-    favSubjects: ['C++, Java, C']
+    favSubjects: ['C++', 'Java', 'C']
 
 })
 
@@ -100,12 +102,19 @@ const PM = new ProjectManagers({
     gradeClassName: 'CS23', 
     favInstructor: 'Mr.Sean'
 })
-  console.log(fred.speak());
-  console.log(instructor.speak());
-  console.log(instructor.demo('storage'))
- console.log(student.grade('Javascript'))
- student.listSubjects();
- student.PRAssignment('CSS')
- student.sprintChallenge('react')
- console.log(PM.standUp('UX44'))
-console.log(PM.debugsCode())
+
+console.log('--------starting lambda-classes below--------')
+
+console.log(fred.speak());
+
+console.log(instructor.demo(student.thefavSubjects[0]))
+
+console.log(student.grade(student, student.thefavSubjects[1]))
+
+student.listSubjects();
+
+student.PRAssignment(student.thefavSubjects[2])
+
+student.sprintChallenge(student.thefavSubjects[2])
+PM.standUp('UX44')
+PM.debugsCode(student,student.thefavSubjects[2])
