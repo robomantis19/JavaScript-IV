@@ -54,6 +54,11 @@ class Student extends Instructor{
     sprintChallenge(subject){
         console.log(`${this.Name} has begun sprint challenge on ${subject}`)
     }
+    graduate(){
+        if(this.theGrade > 90){
+            console.log(`${this.Name} has graduated with a score of ${this.theGrade}`)
+        }
+    }
    
 }
 
@@ -130,3 +135,5 @@ PM.standUp('UX44')
 PM.debugsCode(student,student.thefavSubjects[2])
 console.log("stretch below -------------")
 console.log(instructor.calculateGrade(student));
+
+student.graduate();
