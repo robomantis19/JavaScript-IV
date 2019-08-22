@@ -25,11 +25,18 @@ class Instructor extends Person{
     grade(student, subject){
         return `${student.Name} recieves a perfect score on ${subject}`
     }
+    calculateGrade(student){
+        if(student.theGrade === 0){
+            student.theGrade = 90;
+            return `${this.Name} gave ${student.Name} a ${student.theGrade}`
+        }
+    }
 }
 
 class Student extends Instructor{
     constructor(stuAttr){
         super (stuAttr)
+        this.theGrade = stuAttr.grade
         this.thepreviousBackground = stuAttr.previousBackground
         this.theclassName = stuAttr.className
         this.thefavSubjects = stuAttr.favSubjects
@@ -46,6 +53,7 @@ class Student extends Instructor{
     sprintChallenge(subject){
         console.log(`${this.Name} has begun sprint challenge on ${subject}`)
     }
+   
 }
 
 class ProjectManagers extends Instructor{
@@ -88,7 +96,8 @@ const student = new Student({
     location: 'Iowa',
     previousBackground: 'Burger King worker',
     className: "CS243",
-    favSubjects: ['C++', 'Java', 'C']
+    favSubjects: ['C++', 'Java', 'C'],
+    grade: 0,
 
 })
 
@@ -118,3 +127,5 @@ student.PRAssignment(student.thefavSubjects[2])
 student.sprintChallenge(student.thefavSubjects[2])
 PM.standUp('UX44')
 PM.debugsCode(student,student.thefavSubjects[2])
+console.log("stretch below -------------")
+console.log(instructor.calculateGrade(student));
