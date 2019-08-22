@@ -26,10 +26,11 @@ class Instructor extends Person{
         return `${student.Name} recieves a perfect score on ${subject}`
     }
     calculateGrade(student){
-        if(student.theGrade === 0){
             student.theGrade = 90;
+            const addOrsub = Math.floor(((Math.random()-.5)*2) *10);
+            student.theGrade += addOrsub;
             return `${this.Name} gave ${student.Name} a ${student.theGrade}`
-        }
+        
     }
 }
 
