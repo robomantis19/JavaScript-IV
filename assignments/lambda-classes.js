@@ -22,9 +22,9 @@ class Instructor extends Person{
     demo(subject){
         return `Today we are learning about ${subject}`
     }
-    grade(student, subject){
-        return `${student.Name} recieves a perfect score on ${subject}`
-    }
+    // grade(student, subject){
+    //     return `${student.Name} recieves a perfect score on ${subject}`
+    // }
     calculateGrade(student){
             student.theGrade = 90;
             const addOrsub = Math.floor(((Math.random()-.5)*2) *10);
@@ -34,7 +34,7 @@ class Instructor extends Person{
     }
 }
 
-class Student extends Instructor{
+class Student extends Person{
     constructor(stuAttr){
         super (stuAttr)
         this.theGrade = stuAttr.grade
@@ -42,6 +42,9 @@ class Student extends Instructor{
         this.theclassName = stuAttr.className
         this.thefavSubjects = stuAttr.favSubjects
     }  
+    grade( subject){
+        return `${this.Name} recieves a perfect score on ${subject}`
+    }
     listSubjects(){
         console.log(`${this.thefavSubjects[0]}`)
         console.log(`${this.thefavSubjects[1]}`)
@@ -107,6 +110,17 @@ const student = new Student({
 
 })
 
+const student2 = new Student({
+    name: 'Johnny',
+    age: 30,
+    location: 'Texas',
+    previousBackground: 'Mcdonnalds worker',
+    className: "CS400",
+    favSubjects: ['React', 'node', 'javascript'],
+    grade: 0,
+
+})
+
 const PM = new ProjectManagers({
     name: 'Jack', 
     age: 40, 
@@ -124,8 +138,8 @@ console.log(fred.speak());
 
 console.log(instructor.demo(student.thefavSubjects[0]))
 
-console.log(student.grade(student, student.thefavSubjects[1]))
-
+console.log(student.grade( student.thefavSubjects[1]))
+console.log(student2.grade( student.thefavSubjects[2]))
 student.listSubjects();
 
 student.PRAssignment(student.thefavSubjects[2])
