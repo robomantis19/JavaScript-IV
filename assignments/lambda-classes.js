@@ -149,5 +149,6 @@ PM.standUp('UX44')
 PM.debugsCode(student,student.thefavSubjects[2])
 console.log("stretch below -------------")
 console.log(instructor.calculateGrade(student));
-
+console.log(instructor.calculateGrade(student2));
 student.graduate();
+student2.graduate();
